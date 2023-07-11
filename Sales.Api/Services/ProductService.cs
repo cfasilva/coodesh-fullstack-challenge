@@ -3,7 +3,7 @@ using Sales.Api.Repositories;
 
 namespace Sales.Api.Services;
 
-public class ProductService
+public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
 
@@ -23,9 +23,9 @@ public class ProductService
         return await _productRepository.GetProductAsync(id);
     }
 
-    public async Task<Product> CreateProductAsync(Product product)
+    public async Task CreateProductAsync(Product product)
     {
-        return await _productRepository.CreateProductAsync(product);
+        await _productRepository.CreateProductAsync(product);
     }
 
     public async Task UpdateProductAsync(Product product)

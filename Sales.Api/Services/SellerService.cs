@@ -3,7 +3,7 @@ using Sales.Api.Repositories;
 
 namespace Sales.Api.Services;
 
-public class SellerService
+public class SellerService : ISellerService
 {
     private readonly ISellerRepository _sellerRepository;
 
