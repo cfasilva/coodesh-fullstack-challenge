@@ -13,10 +13,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<ISellerRepository, SellerRepository>();
-
-builder.Services.AddScoped<SellerService>();
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
