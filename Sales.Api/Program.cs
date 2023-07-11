@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Sales.Api.Contexts;
-using Sales.Api.Repositories;
-using Sales.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
