@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Sales.Api.Contexts;
 using Sales.Api.Models;
-using Sales.Api.Services;
 
 namespace Sales.Api.Controllers;
 
