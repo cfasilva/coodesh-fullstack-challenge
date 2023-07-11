@@ -1,6 +1,6 @@
 namespace Sales.Api.Models;
 
-public class TransactionModel
+public class Transaction
 {
     public int Id { get; set; }
     public TransactionType Type { get; set; }
