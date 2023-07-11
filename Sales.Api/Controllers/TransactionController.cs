@@ -21,7 +21,11 @@ public class TransactionController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAsync()
     {
-        var transactions = await _context.Transactions.ToListAsync();
+        var transactions = await _context.Transactions
+            .Include(t => t.Product)
+            .Include(t => t.Seller)
+            .ToListAsync();
+            
         decimal total = transactions.Sum(t => t.Value);
 
         return Ok(new
@@ -67,12 +71,26 @@ public class TransactionController : ControllerBase
             string date = line.Substring(1, 25);
             DateTime.TryParseExact(date, "yyyy-MM-ddTHH:mm:sszzz", CultureInfo.InvariantCulture, DateTimeStyles.None, out var parsedDate);
 
-            string product = line.Substring(26, 30).Trim();
+            string productName = line.Substring(26, 30).Trim();
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Name == productName);
+            if (product == null)
+            {
+                product = new Product { Name = productName };
+                await _context.Products.AddAsync(product);
+                await _context.SaveChangesAsync();
+            }
 
             string value = line.Substring(56, 10);
             bool v = decimal.TryParse(value, out var parsedValue);
 
-            string seller = line.Substring(66).Trim();
+            string sellerName = line.Substring(66).Trim();
+            var seller = await _context.Sellers.FirstOrDefaultAsync(s => s.Name == sellerName);
+            if (seller == null)
+            {
+                seller = new Seller { Name = sellerName };
+                await _context.Sellers.AddAsync(seller);
+                await _context.SaveChangesAsync();
+            }
 
             var transaction = new Transaction
             {
