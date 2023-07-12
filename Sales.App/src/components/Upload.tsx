@@ -1,6 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import './Upload.css'
+
 export function Upload() {
     const [file, setFile] = React.useState<File>()
     const navigate = useNavigate()
@@ -24,7 +26,7 @@ export function Upload() {
     }
 
     return (
-        <div>
+        <div className="container">
             <form onSubmit={submitFile}>
                 <input type="file" accept='.txt' onChange={e => setFile(e.target.files![0])} />
                 <button type="submit">Upload</button>
