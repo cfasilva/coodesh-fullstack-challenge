@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f0f0f5;
+    -webkit-font-smoothing: antialiased;
+}
+
+body, input, textarea, button {
+    font: 400 1rem 'Roboto', sans-serif;
+}
+
+.tableDiv {
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #1da1f2;
+}
