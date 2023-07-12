@@ -17,7 +17,7 @@ export function Products() {
 
     return (
         <>
-            <Header />
+            <Header enableNavigation />
             
             <div className="tableDiv">
                 <table>

@@ -31,7 +31,7 @@ export function Transactions() {
 
     return (
         <>
-            <Header />
+            <Header enableNavigation />
 
             <h2>Total: R${total}</h2>
             

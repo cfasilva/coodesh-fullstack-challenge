@@ -1,10 +1,15 @@
 import { Link } from 'react-router-dom'
 
-export function Header() {
+interface HeaderProps {
+    enableNavigation: boolean
+}
+
+export function Header(props: HeaderProps) {
     return (
         <header>
             <h1>Coodesh Fullstack Challenge</h1>
-            <nav>
+
+            <nav style={{ display: props.enableNavigation ? 'flex' : 'none' }}>
                 <Link to="/">Home</Link>
                 <Link to="/transactions">Transactions</Link>
                 <Link to="/products">Products</Link>
